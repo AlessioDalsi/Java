@@ -7,10 +7,12 @@ public class Tree {
 
     Node root;
     Node mynode;
+    Node parent;
 
     public Tree(int root) {
         this.root = new Node(root);
         mynode = this.root;
+        parent = this.root;
     }
 
     public Node getRoot() {
@@ -27,6 +29,7 @@ public class Tree {
         }
 
         Node mynode = new Node(x);
+        parent = n;
         n.setRight(mynode);
         return mynode;
     }
@@ -36,11 +39,13 @@ public class Tree {
             return null;
         }
         Node mynode = new Node(x);
+        parent = n;
         n.setLeft(mynode);
         return mynode;
     }
 
     public Node searchFirst(Node n, int x) {
+        Node found = new Node();
         if (n == null) {
             return null;
         }
@@ -48,15 +53,33 @@ public class Tree {
             return n;
         }
 
-        Node l=searchFirst(n.getLeft(), x);
-        if(l!=null){
-            return l;
+        Node l = searchFirst(n.getLeft(), x);
+        if (l != null) {
+            found = l;
         }
-        Node k=searchFirst(n.getRight(), x);
+        Node k = searchFirst(n.getRight(), x);
         if (k != null) {
-            return k;
+            found = k;
         }
-        return l;
+        return found;
+    }
+
+    public Node searchNode(Node n) {
+
+        Node found = new Node();
+        if (n == null) {
+            return null;
+        }
+
+        Node l = searchNode(n.getLeft());
+        if (l != null) {
+            found = l;
+        }
+        Node k = searchNode(n.getRight());
+        if (k != null) {
+            found = k;
+        }
+        return found;
     }
 
     public void update(Node n, int x) {
@@ -64,10 +87,10 @@ public class Tree {
     }
 
     public void delete(Node n) {
-        if (mynode.getRight() == n) {
-            mynode.setRight(null);
-        } else if (mynode.getLeft() == n) {
-            mynode.setLeft(null);
+        parent.setLeft(n.getLeft());
+        parent.setRight(n.getRight());
+        if (searchNode(n) != null) {
+            n = null;
         }
     }
 }

@@ -20,6 +20,8 @@ public class Node {
         this.item = item;
     }
 
+    public Node(){}
+
     public void setLeft(Node n) {
         left = n;
     }
