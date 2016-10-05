@@ -4,23 +4,33 @@
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NodeException {
         Tree t = new Tree(2);
         Node root = t.getRoot();
-        try {
-            t.insertLeft(root, 3);
-        }catch (NodeException e){
-            System.out.print("Nodo già esistente con valore: " + e.getN().getItem());
-        }
         Node nx=new Node();
-        try {
-            nx = t.insertRight(root, 3);
 
-        }catch (NodeException e){
-            System.out.print("Nodo già esistente con valore: " + e.getN().getItem());
+        for (int i = 0; i < 50; i++) {
+            try {
+                nx = t.insertRight(root, 7);
+            } catch (NodeException exception) {
+                System.out.println("Esiste già un nodo in questa posizione. Il nodo precedente verrà sostituito");
+                t.delete(exception.getN());
+                nx = t.insertRight(root, 7);
+                System.out.println(exception.getCounter());
+            }
         }
 
-        Node n5 = t.searchFirst(root, 5);
+        for (int i = 0; i < 50; i++) {
+            try {
+                nx = t.insertLeft(root, 14);
+            } catch (NodeException exception) {
+                System.out.println("Esiste già un nodo in questa posizione. Il nodo precedente verrà sostituito");
+                t.delete(exception.getN());
+                nx = t.insertLeft(root, 14);
+                System.out.println(exception.getCounter());
+            }
+        }
+        Node n5 = t.searchFirst(root, 7);
         t.delete(n5);
 
         t.update(nx, 10);
