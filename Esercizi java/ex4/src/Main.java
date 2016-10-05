@@ -7,9 +7,18 @@ public class Main {
     public static void main(String[] args) {
         Tree t = new Tree(2);
         Node root = t.getRoot();
-        t.insertLeft(root, 3);
-        Node nx = t.insertRight(root, 3);
-        t.insertRight(nx, 5);
+        try {
+            t.insertLeft(root, 3);
+        }catch (NodeException e){
+            System.out.print("Nodo già esistente con valore: " + e.getN().getItem());
+        }
+        Node nx=new Node();
+        try {
+            nx = t.insertRight(root, 3);
+
+        }catch (NodeException e){
+            System.out.print("Nodo già esistente con valore: " + e.getN().getItem());
+        }
 
         Node n5 = t.searchFirst(root, 5);
         t.delete(n5);

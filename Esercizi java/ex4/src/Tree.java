@@ -3,6 +3,7 @@
  */
 
 
+
 public class Tree {
 
     Node root;
@@ -23,9 +24,11 @@ public class Tree {
         this.root = root;
     }
 
-    public Node insertRight(Node n, int x) {
+    public Node insertRight(Node n, int x) throws NodeException{
         if (n.getRight() != null) {
-            return null;
+            NodeException exception=new NodeException();
+            exception.setN(n.getRight());
+            throw exception;
         }
 
         Node mynode = new Node(x);
@@ -34,9 +37,13 @@ public class Tree {
         return mynode;
     }
 
-    public Node insertLeft(Node n, int x) {
+    public Node insertLeft(Node n, int x) throws NodeException {
         if (n.getLeft() != null) {
-            return null;
+            NodeException exception=new NodeException();
+            n.setLeft(null);
+            n.setLeft(n);
+            exception.setN(n.getLeft());
+            throw exception;
         }
         Node mynode = new Node(x);
         parent = n;
