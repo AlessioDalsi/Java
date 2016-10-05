@@ -93,11 +93,16 @@ public class Tree {
         n.setItem(x);
     }
 
-    public void delete(Node n) {
-        parent.setLeft(n.getLeft());
-        parent.setRight(n.getRight());
-        if (searchNode(n) != null) {
-            n = null;
+    public void delete(Node n){
+
+        if (n.getParent().getLeft() == n){
+            n.getParent().setLeft(null);
+
+        }else if (n.getParent().getRight() == n){
+            n.getParent().setRight(null);
         }
+
+
+
     }
 }

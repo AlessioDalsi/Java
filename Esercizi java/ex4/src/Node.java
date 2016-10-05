@@ -8,6 +8,16 @@ public class Node {
     private Node left;
     private Node right;
 
+    private Node parent;
+
+    public Node getParent() {
+        return parent;
+    }
+
+    public void setParent(Node parent) {
+        this.parent = parent;
+    }
+
     public int getItem() {
         return item;
     }
