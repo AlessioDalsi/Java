@@ -25,7 +25,7 @@ public class Tree {
         this.root = root;
     }
 
-    public Node insertRight(Node n, Object x) throws NodeException {
+    public Node insertRight(Node n, Node x) throws NodeException {
         if (n.getRight() != null) {
             NodeException exception = new NodeException();
             exception.setN(n.getRight());
@@ -33,7 +33,6 @@ public class Tree {
         }
 
         parent = n;
-        Node mynode = x;
         n.setRight(mynode);
         return mynode;
     }
