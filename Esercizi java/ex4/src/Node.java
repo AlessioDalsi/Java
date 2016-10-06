@@ -5,6 +5,15 @@ public class Node {
     private Node left;
     private Node right;
     private Node parent;
+    private Object item;
+
+    public Object getItem() {
+        return item;
+    }
+
+    public void setItem(Object item) {
+        this.item = item;
+    }
 
     public void setLeft(Node left) {
         this.left = left;
@@ -30,5 +39,4 @@ public class Node {
         this.parent = parent;
     }
 
-    public Node(){}
 }

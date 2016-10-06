@@ -3,22 +3,22 @@
  */
 public class Person{
 
-    private String Nome;
-    private String Cognome;
+    private String nome;
+    private String cognome;
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String nome) {
-        Nome = nome;
+        this.nome = nome;
     }
 
     public String getCognome() {
-        return Cognome;
+        return cognome;
     }
 
     public void setCognome(String cognome) {
-        Cognome = cognome;
+        this.cognome = cognome;
     }
 }

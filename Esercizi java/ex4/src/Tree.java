@@ -25,7 +25,7 @@ public class Tree {
         this.root = root;
     }
 
-    public Node insertRight(Node n, Node x) throws NodeException {
+    public Node insertRight(Node n, Object x) throws NodeException {
         if (n.getRight() != null) {
             NodeException exception = new NodeException();
             exception.setN(n.getRight());
@@ -52,22 +52,21 @@ public class Tree {
         return mynode;
     }
 
-    /*public Node searchFirst(Node n, int x) {
+    public Node searchFirst(Node n, Object item) {
         if (n == null) {
             return null;
         }
-        if (n.getItem() == x) {
+        if (n.getItem().equals(item)) {
             return n;
 
-        } else {
-            Node found = searchFirst(n.getLeft(), x);
-            if (found == null) {
-                found = searchFirst(n.getRight(), x);
-            }
-
-            return found;
         }
-    }*/
+        Node found = searchFirst(n.getLeft(), item);
+        if (found == null) {
+            found = searchFirst(n.getRight(), item);
+        }
+
+        return found;
+    }
 
     public void update(Node n, Object x) {
         n.setItem(x);
