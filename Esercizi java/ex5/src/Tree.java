@@ -11,34 +11,36 @@ public class Tree {
     private int countR = 0;
     private int countL = 0;
 
-    public Tree() {
-        this.root = new Node();
+    public Tree(int root) {
+        this.root = new NodeInt(root);
         mynode = this.root;
         parent = this.root;
     }
 
-    public Node getRoot() {
+    public NodeInt getRoot() {
         return root;
     }
 
-    public void setRoot(Node root) {
+    public void setRoot(NodeInt root) {
         this.root = root;
     }
 
-    public Node insertRight(Node n, Node x) throws NodeException {
+    public NodeInt insertRight(NodeInt n, int x) throws NodeException {
         if (n.getRight() != null) {
             NodeException exception = new NodeException();
             exception.setN(n.getRight());
-            throw exception;
+            /*countR++;
+            if (countR < 50)*/
+                throw exception;
         }
 
+        NodeInt mynode = new NodeInt(x);
         parent = n;
-        Node mynode = x;
         n.setRight(mynode);
         return mynode;
     }
 
-    public Node insertLeft(Node n, Node x) throws NodeException {
+    public NodeInt insertLeft(NodeInt n, int x) throws NodeException {
         if (n.getLeft() != null) {
             NodeException exception = new NodeException();
             exception.setN(n.getLeft());
@@ -46,13 +48,13 @@ public class Tree {
             /*if (countL<50)
                 throw exception;*/
         }
+        NodeInt mynode = new Node(x);
         parent = n;
-        Node mynode = x;
         n.setLeft(mynode);
         return mynode;
     }
 
-    /*public Node searchFirst(Node n, int x) {
+    public Node searchFirst(Node n, int x) {
         if (n == null) {
             return null;
         }
@@ -67,9 +69,9 @@ public class Tree {
 
             return found;
         }
-    }*/
+    }
 
-    public void update(Node n, Object x) {
+    public void update(Node n, int x) {
         n.setItem(x);
     }
 
