@@ -29,8 +29,8 @@ public class Tree {
         if (n.getRight() != null) {
             NodeException exception = new NodeException();
             exception.setN(n.getRight());
-            countR++;
-            if (countR < 50)
+            /*countR++;
+            if (countR < 50)*/
                 throw exception;
         }
 
@@ -45,8 +45,8 @@ public class Tree {
             NodeException exception = new NodeException();
             exception.setN(n.getLeft());
             countL++;
-            if (countR<50)
-                throw exception;
+            /*if (countL<50)
+                throw exception;*/
         }
         Node mynode = new Node(x);
         parent = n;
